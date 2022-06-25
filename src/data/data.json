@@ -1,0 +1,131 @@
+{
+    "Processors": [
+      {
+        "id": "p1",
+        "family": "Intel Core i5",
+        "name": "Intel Core i5-11400F",
+        "brand": "Intel",
+        "imgURL": "https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2021/3/pr_2021_3_16_17_21_50_504_00.jpg",
+        "frequency": "2.6 GHz",
+        "cores": "6",
+        "price": "150"
+      },
+      {
+        "id": "p2",
+        "family": "Intel Core i5",
+        "name": "Intel Core i5-12600K",
+        "brand": "Intel",
+        "imgURL": "https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2021/10/pr_2021_10_26_7_31_43_884_00.jpg",
+        "frequency": "3.7 GHz",
+        "cores": "10",
+        "price": "280"
+      },
+      {
+        "id": "p3",
+        "family": "AMD Ryzen 7",
+        "name": "AMD Ryzen 7 5800X",
+        "brand": "AMD",
+        "imgURL": "https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2020/10/pr_2020_10_9_13_47_7_306_00.jpg",
+        "frequency": "3.8 GHz",
+        "cores": "8",
+        "price": "350"
+      },
+      {
+        "id": "p4",
+        "family": "AMD Ryzen 7",
+        "name": "AMD Ryzen 7 5700G",
+        "brand": "Intel",
+        "imgURL": "https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2021/10/pr_2021_10_26_7_31_43_884_00.jpg",
+        "frequency": "3.8 GHz",
+        "cores": "8",
+        "price": "300"
+      }
+    ],
+    "Graphics Cards": [
+      {
+        "id": "g1",
+        "gpuProducer": "NVIDIA",
+        "gpu": "GeForce RTX 2060",
+        "family": "GeForce",
+        "name": "EVGA GeForce RTX 2060 KO Ultra Gaming 6GB GDDR6",
+        "brand": "EVGA",
+        "imgURL": "https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2021/7/pr_2021_7_9_14_51_25_126_04.jpg",
+        "coreClock": "1710 MHz",
+        "memoryClock": "14000 MHz",
+        "memory": "6",
+        "price": "400"
+      },
+      {
+        "id": "g2",
+        "gpuProducer": "NVIDIA",
+        "gpu": "GeForce RTX 3090",
+        "family": "GeForce",
+        "name": "MSI GeForce RTX 3090 GAMING X TRIO 24GB GDDR6X",
+        "brand": "EVGA",
+        "imgURL": "https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2020/9/pr_2020_9_8_8_16_40_269_00.jpg",
+        "coreClock": "1219 MHz",
+        "memoryClock": "19500 MHz",
+        "memory": "24",
+        "price": "1100"
+      },
+      {
+        "id": "g3",
+        "gpuProducer": "NVIDIA",
+        "gpu": "GeForce RTX 3090",
+        "family": "GeForce",
+        "name": "MSI GeForce RTX 3090 GAMING X TRIO 24GB GDDR6X",
+        "brand": "MSI",
+        "imgURL": "https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2021/5/pr_2021_5_28_10_27_54_512_00.jpg",
+        "coreClock": "1219 MHz",
+        "memoryClock": "19500 MHz",
+        "memory": "24",
+        "price": "1100"
+      },
+      {
+        "id": "g4",
+        "gpuProducer": "ATI",
+        "gpu": "Radeon RX 6900 XT",
+        "family": "Radeon",
+        "name": "MSI Radeon RX 6900 XT GAMING Z TRIO 16GB GDDR6",
+        "brand": "MSI",
+        "imgURL": "https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2020/9/pr_2020_9_8_8_16_40_269_00.jpg",
+        "coreClock": "2425 MHz",
+        "memoryClock": "16000 MHz",
+        "memory": "16",
+        "price": "1550"
+      },
+      {
+        "id": "g4",
+        "gpuProducer": "ATI",
+        "gpu": "Radeon RX 6400",
+        "family": "Radeon",
+        "name": "Gigabyte Radeon RX 6400 EAGLE 4GB GDDR6",
+        "brand": "Gigabyte",
+        "imgURL": "https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2022/4/pr_2022_4_20_12_46_31_274_06.jpg",
+        "coreClock": "666 MHz",
+        "memoryClock": "16000 MHz",
+        "memory": "4",
+        "price": "1550"
+      }
+    ],
+    "Motherboards": [
+      {
+        "id": "m1",
+        "socket": "AM4",
+        "chipset": "AMD B450",
+        "name": "MSI B450M-A PRO MAX",
+        "brand": "MSI",
+        "imgURL": "https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2019/8/pr_2019_8_21_8_15_21_276_00.jpg",
+        "maxRam": "64 GB"
+      },
+      {
+        "id": "m2",
+        "socket": "1700",
+        "chipset": "AMD B450",
+        "name": "Gigabyte B660M DS3H DDR4",
+        "brand": "Gigabyte",
+        "imgURL": "https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2022/1/pr_2022_1_3_20_8_29_173_00.jpg",
+        "maxRam": "128 GB"
+      }
+    ]
+  }
