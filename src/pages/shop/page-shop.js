@@ -10,10 +10,14 @@ import data from "../../data/data.json";
 import GraphicsCards from "./components/graphicsCards";
 import Motherboards from "./components/motherboards";
 
+import ShopHeader from "./components/shopHeader";
+
 function Shop()
 {
   const [dataItems, setDataItems] = useState(data);
   const [shoppingCart, setShoppingCart] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [cartItemsNumber, setCartItemsNumber] = useState(0);
 
   // quantinity
   const incrementQuantinity = (e) =>
@@ -59,16 +63,12 @@ function Shop()
     shoppingCart.some((el) => el.id === id)
       ? setShoppingCart(shoppingCart.map((el) => (el.id === id ? { ...el, quantinity: el.quantinity + item.quantinity } : el)))
       : setShoppingCart([...shoppingCart, item]);
-
+    setDataItems({
+      ...dataItems,
+      [group]: dataItems[group].map((el) => ((el.id === id) ? { ...el, quantinity: 1 } : el)),
+    });
     console.log(shoppingCart);
   };
-
-  // cart item data structure:
-  // {
-  //     price:,
-  //     quantinity:,
-  //     data: {}
-  // }
 
   const removeFromCart = (e) =>
   {
@@ -76,10 +76,25 @@ function Shop()
       .filter((cartItem) => cartItem.id !== e.target.parentElement.dataset.id));
   };
 
+  const updateCart = (e) =>
+  {
+    setTotalPrice(shoppingCart.reduce((sum, cartItem) => sum + (cartItem.price * cartItem.quantinity), 0));
+    setCartItemsNumber(shoppingCart.reduce((sum, cartItem) => sum + cartItem.quantinity, 0));
+  };
+
+  useEffect(() =>
+  {
+    updateCart();
+  }, [shoppingCart]);
+
   //   router
 
   return (
     <div className="shop-container">
+      <ShopHeader
+        cartItemsNumber={cartItemsNumber}
+        cartValue={totalPrice}
+      />
       <GraphicsCards
         data={dataItems}
         incrementQuantinity={incrementQuantinity}
