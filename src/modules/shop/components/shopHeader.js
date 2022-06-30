@@ -10,8 +10,8 @@ function ShopHeader(props)
 {
   return (
     <div className="shop-header-container">
-      <div className="shop-header-logo">
-        <img src={logo} alt="logo" />
+      <div className="shop-header-logo-container">
+        <img src={logo} alt="logo" className="shop-header-logo" />
       </div>
       <div className="shop-header-shopCart-container">
         <div className="shop-header-shopCart-icon"><FontAwesomeIcon icon={faCartShopping} className="shopping-cart-indicator-icon" /></div>

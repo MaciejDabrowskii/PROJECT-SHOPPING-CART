@@ -5,13 +5,11 @@
 /* eslint-disable no-unused-vars */
 // eslint-disable-next-line no-unused-vars
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import data from "../../data/data.json";
-import GraphicsCards from "./components/graphicsCards";
-import Motherboards from "./components/motherboards";
-import Processors from "./components/processors";
 import ShopHeader from "./components/shopHeader";
 import NavBar from "../navigation/navbar";
+import DisplayItems from "./components/displayItems";
 
 function Shop()
 {
@@ -19,6 +17,29 @@ function Shop()
   const [shoppingCart, setShoppingCart] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [cartItemsNumber, setCartItemsNumber] = useState(0);
+  const [mainShopContainerHeight, setmainShopContainerHeight] = useState(0);
+  const [shopContainerHeight, setShopContainerHeight] = useState(0);
+  const [scrollValue, setScrollValue] = useState(0);
+  // scroll functions
+
+  const shopContainer = useRef(null);
+  const mainShopContainer = useRef(null);
+
+  useEffect(() =>
+  {
+    setShopContainerHeight(shopContainer.current.clientHeight);
+    setmainShopContainerHeight(mainShopContainer.current.clientHeight);
+  });
+
+  const onScroll = (e) =>
+  {
+    if (((scrollValue + e.deltaY) <= 0) && ((-Math.abs(shopContainerHeight) + mainShopContainerHeight) <= scrollValue))
+    {
+      setScrollValue(scrollValue + e.deltaY);
+    }
+    else if ((-Math.abs(shopContainerHeight) + mainShopContainerHeight) > scrollValue) setScrollValue(-Math.abs(shopContainerHeight) + mainShopContainerHeight);
+    else if ((scrollValue + e.deltaY) > 0) setScrollValue(0);
+  };
 
   // quantinity
   const incrementQuantinity = (e) =>
@@ -91,34 +112,52 @@ function Shop()
   //   router
 
   return (
-    <div className="shop-container">
+    <div
+      className="shop-container"
+
+    >
       <ShopHeader
         cartItemsNumber={cartItemsNumber}
         cartValue={totalPrice}
       />
       <NavBar />
-      <div className="shop-items-container">
-        <GraphicsCards
-          data={dataItems}
-          incrementQuantinity={incrementQuantinity}
-          decrementQuantinity={decrementQuantinity}
-          onChange={onQuantinityInput}
-          addToCart={addToCart}
-        />
-        <Motherboards
-          data={dataItems}
-          incrementQuantinity={incrementQuantinity}
-          decrementQuantinity={decrementQuantinity}
-          onChange={onQuantinityInput}
-          addToCart={addToCart}
-        />
-        <Processors
-          data={dataItems}
-          incrementQuantinity={incrementQuantinity}
-          decrementQuantinity={decrementQuantinity}
-          onChange={onQuantinityInput}
-          addToCart={addToCart}
-        />
+      <div
+        className="main-shop-items-container"
+        ref={mainShopContainer}
+      >
+        <div
+          className="shop-items-container"
+          ref={shopContainer}
+          onWheel={onScroll}
+          style={{
+            transform: `translateY(${scrollValue}px)`,
+          }}
+        >
+          <DisplayItems
+            data={dataItems}
+            group="Processors"
+            incrementQuantinity={incrementQuantinity}
+            decrementQuantinity={decrementQuantinity}
+            onChange={onQuantinityInput}
+            addToCart={addToCart}
+          />
+          <DisplayItems
+            data={dataItems}
+            group="Graphics Cards"
+            incrementQuantinity={incrementQuantinity}
+            decrementQuantinity={decrementQuantinity}
+            onChange={onQuantinityInput}
+            addToCart={addToCart}
+          />
+          <DisplayItems
+            data={dataItems}
+            group="Motherboards"
+            incrementQuantinity={incrementQuantinity}
+            decrementQuantinity={decrementQuantinity}
+            onChange={onQuantinityInput}
+            addToCart={addToCart}
+          />
+        </div>
       </div>
     </div>
   );
