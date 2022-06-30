@@ -9,8 +9,9 @@ import React, { useEffect, useState } from "react";
 import data from "../../data/data.json";
 import GraphicsCards from "./components/graphicsCards";
 import Motherboards from "./components/motherboards";
-
+import Processors from "./components/processors";
 import ShopHeader from "./components/shopHeader";
+import NavBar from "../navigation/navbar";
 
 function Shop()
 {
@@ -73,7 +74,7 @@ function Shop()
   const removeFromCart = (e) =>
   {
     setShoppingCart([...shoppingCart]
-      .filter((cartItem) => cartItem.id !== e.target.parentElement.dataset.id));
+      .filter((cartItem) => cartItem.id !== e.target.dataset.id));
   };
 
   const updateCart = (e) =>
@@ -95,20 +96,30 @@ function Shop()
         cartItemsNumber={cartItemsNumber}
         cartValue={totalPrice}
       />
-      <GraphicsCards
-        data={dataItems}
-        incrementQuantinity={incrementQuantinity}
-        decrementQuantinity={decrementQuantinity}
-        onChange={onQuantinityInput}
-        addToCart={addToCart}
-      />
-      <Motherboards
-        data={dataItems}
-        incrementQuantinity={incrementQuantinity}
-        decrementQuantinity={decrementQuantinity}
-        onChange={onQuantinityInput}
-        addToCart={addToCart}
-      />
+      <NavBar />
+      <div className="shop-items-container">
+        <GraphicsCards
+          data={dataItems}
+          incrementQuantinity={incrementQuantinity}
+          decrementQuantinity={decrementQuantinity}
+          onChange={onQuantinityInput}
+          addToCart={addToCart}
+        />
+        <Motherboards
+          data={dataItems}
+          incrementQuantinity={incrementQuantinity}
+          decrementQuantinity={decrementQuantinity}
+          onChange={onQuantinityInput}
+          addToCart={addToCart}
+        />
+        <Processors
+          data={dataItems}
+          incrementQuantinity={incrementQuantinity}
+          decrementQuantinity={decrementQuantinity}
+          onChange={onQuantinityInput}
+          addToCart={addToCart}
+        />
+      </div>
     </div>
   );
 }

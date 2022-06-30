@@ -9,7 +9,7 @@ function Motherboards(props)
     <div className="motherboards-container">
       {props.data.Motherboards.map((motherboard) => (
         <div
-          className="motherboard-card"
+          className="motherboard-card card"
           key={motherboard.id}
           data-id={motherboard.id}
           data-group="Motherboards"
@@ -62,17 +62,15 @@ function Motherboards(props)
             </li>
           </ul>
           <form>
-            <label htmlFor="item-quantinity-input">
-              Quantinity:
-              <input
-                type="number"
-                id="item-quantinity-input"
-                value={motherboard.quantinity}
-                data-id={motherboard.id}
-                data-group="Motherboards"
-                onChange={props.onChange}
-              />
-            </label>
+            <input
+              type="number"
+              id="item-quantinity-input"
+              value={motherboard.quantinity}
+              data-id={motherboard.id}
+              data-group="Motherboards"
+              onChange={props.onChange}
+            />
+
             <button
               type="button"
               data-id={motherboard.id}
@@ -89,15 +87,15 @@ function Motherboards(props)
             >
               -
             </button>
+            <button
+              type="button"
+              data-id={motherboard.id}
+              data-group="Motherboards"
+              onClick={props.addToCart}
+            >
+              add to cart
+            </button>
           </form>
-          <button
-            type="button"
-            data-id={motherboard.id}
-            data-group="Motherboards"
-            onClick={props.addToCart}
-          >
-            add to cart
-          </button>
         </div>
       ))}
     </div>

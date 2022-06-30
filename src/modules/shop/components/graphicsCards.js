@@ -9,7 +9,7 @@ function GraphicsCards(props)
     <div className="grapics-cards-container">
       {props.data["Graphics Cards"].map((card) => (
         <div
-          className="grapic-card"
+          className="grapic-card card"
           key={card.id}
           data-id={card.id}
           data-group="Graphics Cards"
@@ -62,17 +62,16 @@ function GraphicsCards(props)
             </li>
           </ul>
           <form>
-            <label htmlFor="item-quantinity-input">
-              Quantinity:
-              <input
-                type="number"
-                id="item-quantinity-input"
-                value={card.quantinity}
-                data-id={card.id}
-                data-group="Graphics Cards"
-                onChange={props.onChange}
-              />
-            </label>
+
+            <input
+              type="number"
+              id="item-quantinity-input"
+              value={card.quantinity}
+              data-id={card.id}
+              data-group="Graphics Cards"
+              onChange={props.onChange}
+            />
+
             <button
               type="button"
               data-id={card.id}
