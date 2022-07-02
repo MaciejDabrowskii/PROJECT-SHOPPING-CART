@@ -17,32 +17,35 @@ function DisplayItems(props)
           data-id={item.id}
           data-group={`${props.group}`}
         >
+          <h3 className="item-title">{item.name}</h3>
           <img
             src={item.imgURL}
             alt={item.name}
             className="item-img"
           />
-          <h3 className="item-title">{item.name}</h3>
           <ul className="item-properties">
             {Object.keys(item)
               .map((key) =>
               {
-                if (!(key.match("id|quantinity|imgURL")))
+                if (!(key.match("id|quantinity|imgURL|price")))
                 {
-                  return (<li key={uniqid()}>{item[key]}</li>);
+                  return (
+                    <li key={uniqid()}>
+                      {key}
+                      :
+                      {" "}
+                      {item[key]}
+                    </li>
+                  );
                 }
               })}
           </ul>
-          <div className="item-price">{item.price}</div>
+          <div className="item-price">
+            {item.price}
+            {" "}
+            $
+          </div>
           <form>
-            <input
-              type="number"
-              id="item-quantinity-input"
-              value={item.quantinity}
-              data-id={item.id}
-              data-group={`${props.group}`}
-              onChange={props.onChange}
-            />
 
             <button
               type="button"
@@ -52,6 +55,14 @@ function DisplayItems(props)
             >
               +
             </button>
+            <input
+              type="number"
+              id="item-quantinity-input"
+              value={item.quantinity}
+              data-id={item.id}
+              data-group={`${props.group}`}
+              onChange={props.onChange}
+            />
             <button
               type="button"
               data-id={item.id}

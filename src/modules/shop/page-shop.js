@@ -7,9 +7,11 @@
 
 import React, { useEffect, useState, useRef } from "react";
 import data from "../../data/data.json";
-import ShopHeader from "./components/shopHeader";
+import ShoppingCartIndicator from "./components/shopCartIndicator";
 import NavBar from "../navigation/navbar";
 import DisplayItems from "./components/displayItems";
+import ShoppingCart from "./components/shoppingCart";
+import logo from "../../assets/logos/logo_transparent.png";
 
 function Shop()
 {
@@ -17,29 +19,11 @@ function Shop()
   const [shoppingCart, setShoppingCart] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [cartItemsNumber, setCartItemsNumber] = useState(0);
-  const [mainShopContainerHeight, setmainShopContainerHeight] = useState(0);
-  const [shopContainerHeight, setShopContainerHeight] = useState(0);
+  const [showCart, setShowCart] = useState(false);
   const [scrollValue, setScrollValue] = useState(0);
-  // scroll functions
 
   const shopContainer = useRef(null);
   const mainShopContainer = useRef(null);
-
-  useEffect(() =>
-  {
-    setShopContainerHeight(shopContainer.current.clientHeight);
-    setmainShopContainerHeight(mainShopContainer.current.clientHeight);
-  });
-
-  const onScroll = (e) =>
-  {
-    if (((scrollValue + e.deltaY) <= 0) && ((-Math.abs(shopContainerHeight) + mainShopContainerHeight) <= scrollValue))
-    {
-      setScrollValue(scrollValue + e.deltaY);
-    }
-    else if ((-Math.abs(shopContainerHeight) + mainShopContainerHeight) > scrollValue) setScrollValue(-Math.abs(shopContainerHeight) + mainShopContainerHeight);
-    else if ((scrollValue + e.deltaY) > 0) setScrollValue(0);
-  };
 
   // quantinity
   const incrementQuantinity = (e) =>
@@ -116,22 +100,33 @@ function Shop()
       className="shop-container"
 
     >
-      <ShopHeader
+      <div className="shop-header-logo-container">
+        <img src={logo} alt="logo" className="shop-header-logo" />
+      </div>
+      <ShoppingCartIndicator
         cartItemsNumber={cartItemsNumber}
         cartValue={totalPrice}
+        setShowCart={setShowCart}
+        showCart={showCart}
       />
       <NavBar />
-      <div
-        className="main-shop-items-container"
-        ref={mainShopContainer}
-      >
+      {showCart
+      && (
+      <ShoppingCart
+        shoppingCart={shoppingCart}
+        setShoppingCart={setShoppingCart}
+        removeFromCart={removeFromCart}
+        cartValue={totalPrice}
+        setShowCart={setShowCart}
+        showCart={showCart}
+      />
+      )}
+      {!showCart
+      && (
+
         <div
           className="shop-items-container"
-          ref={shopContainer}
-          onWheel={onScroll}
-          style={{
-            transform: `translateY(${scrollValue}px)`,
-          }}
+
         >
           <DisplayItems
             data={dataItems}
@@ -158,7 +153,7 @@ function Shop()
             addToCart={addToCart}
           />
         </div>
-      </div>
+      )}
     </div>
   );
 }
