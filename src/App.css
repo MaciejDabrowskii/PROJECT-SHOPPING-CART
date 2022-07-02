@@ -12,6 +12,7 @@ background-size: cover;
 background-repeat: no-repeat;
 font-family: 'Secular One', sans-serif;
 height: 100vh;
+position: relative;
 }
 .navbar-list {
     list-style: none;
@@ -75,12 +76,23 @@ height: 40rem;
     
     font-size: 1.5rem;
     color: white;
-
     padding: 1rem;
   }
 
+.shop-header {
+display: flex;
+gap: 3rem;
+align-items: center;
+}
+  .shop-header-logo {
+    width: 12rem;
+    margin-left: 1rem;
+  }
+
   .shopCart-container{
-    position: relative;
+    position: absolute;
+    right: 2rem;
+    top: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -91,6 +103,10 @@ height: 40rem;
     height: 6rem;
     padding: 1rem;
     color: white
+  }
+  .shopCart-container:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.692);
   }
 
   .shopping-cart-indicator-icon{
@@ -128,6 +144,7 @@ height: 40rem;
     flex-direction: column;
     width: 20rem;
     padding: 1rem;
+    border-radius: 5%;
   }
   .item-img{
     height:30% ;
@@ -157,12 +174,12 @@ height: 40rem;
   
   .shop-items-container::-webkit-scrollbar-track {
     background: rgba(0, 0, 0, 0.616);
+    border-radius: 20px;
   }
   
   .shop-items-container::-webkit-scrollbar-thumb {
     background-color: #28CC9E;
     border-radius: 20px;
-    border: 3px solid white;
   }
 
 .shoppingCart {
@@ -227,6 +244,14 @@ position: relative;
 
 }
 
+.shoppingCart-total {
+  border-top: 2px solid #28CC9E;
+  width: max-content;
+  align-self: flex-end;
+  padding-top: .3rem;
+  margin-right: 1rem;
+}
+
 .shoppingCart-item-card{
   display: flex;
   height: 5rem;
@@ -269,15 +294,6 @@ cursor: pointer;
   display: flex;
   justify-content: flex-end;
 }
-
-
-
-
-
-  .shop-header-logo{
-    width: 40px;
-    height: 40px;
-  }
 
 
 

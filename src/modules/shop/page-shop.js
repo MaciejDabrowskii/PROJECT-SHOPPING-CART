@@ -98,18 +98,20 @@ function Shop()
   return (
     <div
       className="shop-container"
-
     >
-      <div className="shop-header-logo-container">
-        <img src={logo} alt="logo" className="shop-header-logo" />
+      <div className="shop-header">
+
+        <div className="shop-header-logo-container">
+          <img src={logo} alt="logo" className="shop-header-logo" />
+        </div>
+        <ShoppingCartIndicator
+          cartItemsNumber={cartItemsNumber}
+          cartValue={totalPrice}
+          setShowCart={setShowCart}
+          showCart={showCart}
+        />
+        <NavBar />
       </div>
-      <ShoppingCartIndicator
-        cartItemsNumber={cartItemsNumber}
-        cartValue={totalPrice}
-        setShowCart={setShowCart}
-        showCart={showCart}
-      />
-      <NavBar />
       {showCart
       && (
       <ShoppingCart
