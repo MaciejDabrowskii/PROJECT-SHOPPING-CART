@@ -21,9 +21,6 @@ function Shop()
   const [cartItemsNumber, setCartItemsNumber] = useState(0);
   const [showCart, setShowCart] = useState(false);
 
-  const shopContainer = useRef(null);
-  const mainShopContainer = useRef(null);
-
   // quantinity
   const incrementQuantinity = (e) =>
   {
@@ -72,7 +69,6 @@ function Shop()
       ...dataItems,
       [group]: dataItems[group].map((el) => ((el.id === id) ? { ...el, quantinity: 1 } : el)),
     });
-    console.log(shoppingCart);
   };
 
   const removeFromCart = (e) =>
