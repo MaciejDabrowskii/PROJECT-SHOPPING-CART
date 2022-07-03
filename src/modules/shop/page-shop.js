@@ -20,7 +20,6 @@ function Shop()
   const [totalPrice, setTotalPrice] = useState(0);
   const [cartItemsNumber, setCartItemsNumber] = useState(0);
   const [showCart, setShowCart] = useState(false);
-  const [scrollValue, setScrollValue] = useState(0);
 
   const shopContainer = useRef(null);
   const mainShopContainer = useRef(null);

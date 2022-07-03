@@ -5,6 +5,9 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 import uniqid from "uniqid";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartPlus, faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
+import formatter from "../../utilities/foramtter";
 
 function DisplayItems(props)
 {
@@ -27,7 +30,7 @@ function DisplayItems(props)
             {Object.keys(item)
               .map((key) =>
               {
-                if (!(key.match("id|quantinity|imgURL|price")))
+                if (!(key.match("id|quantinity|imgURL|price|name")))
                 {
                   return (
                     <li key={uniqid()}>
@@ -41,19 +44,21 @@ function DisplayItems(props)
               })}
           </ul>
           <div className="item-price">
-            {item.price}
-            {" "}
-            $
+            {formatter.format(item.price)}
           </div>
-          <form>
+          <form className="item-card-form">
 
             <button
               type="button"
+              className="item-card-form-btn"
               data-id={item.id}
               data-group={`${props.group}`}
               onClick={props.incrementQuantinity}
             >
-              +
+              <FontAwesomeIcon
+                className="item-card-btn-icon"
+                icon={faPlus}
+              />
             </button>
             <input
               type="number"
@@ -66,18 +71,26 @@ function DisplayItems(props)
             <button
               type="button"
               data-id={item.id}
+              className="item-card-form-btn"
               data-group={`${props.group}`}
               onClick={props.decrementQuantinity}
             >
-              -
+              <FontAwesomeIcon
+                className="item-card-btn-icon"
+                icon={faMinus}
+              />
             </button>
             <button
               type="button"
               data-id={item.id}
+              className="item-card-form-btn item-card-form-btn-add"
               data-group={`${props.group}`}
               onClick={props.addToCart}
             >
-              add to cart
+              <FontAwesomeIcon
+                className="item-card-btn-icon"
+                icon={faCartPlus}
+              />
             </button>
           </form>
         </div>

@@ -12,6 +12,8 @@ import {
   faAngleLeft, faAngleRight, faTrash, faPlus, faMinus,
 } from "@fortawesome/free-solid-svg-icons";
 
+import formatter from "../../utilities/foramtter";
+
 function ShoppingCart(props)
 {
   const onClick = () =>
@@ -58,8 +60,8 @@ function ShoppingCart(props)
         Shop
       </button>
       <div className="shoppingCart-container">
-        <div className="ShoppingCart-items-container">
-          <h3>Your shopping cart:</h3>
+        <div className="shoppingCart-items-container">
+          <h3>Your Shopping Cart:</h3>
           <div className="shoppingCart-items">
             {props.shoppingCart.map((item) => (
               <div
@@ -78,9 +80,7 @@ function ShoppingCart(props)
                   <p className="shoppingCart-item-title">{item.name}</p>
                   <form>
                     <div className="shoppingCart-item-price">
-                      {item.price}
-                      {" "}
-                      $
+                      {formatter.format(item.price)}
                     </div>
                     <button
                       type="button"
@@ -114,9 +114,7 @@ function ShoppingCart(props)
             <div className="shoppingCart-total">
               Total:
               {" "}
-              {props.cartValue}
-              {" "}
-              $
+              {formatter.format(props.cartValue)}
             </div>
           </div>
         </div>
