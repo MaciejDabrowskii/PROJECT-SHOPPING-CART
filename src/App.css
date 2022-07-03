@@ -271,6 +271,12 @@ a:visited {
   border-radius: 20px;
 }
 
+.shoppingCart-container-btn-back:hover, 
+.shoppingCart-container-btn-checkout:hover{
+  background-color: rgba(40, 204, 158, 0.157);
+  cursor: pointer;
+}
+
 .shoppingCart-items-container {
   display: flex;
   flex-direction: column;

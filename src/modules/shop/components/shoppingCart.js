@@ -11,7 +11,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faAngleLeft, faAngleRight, faTrash, faPlus, faMinus,
 } from "@fortawesome/free-solid-svg-icons";
-
 import formatter from "../../utilities/foramtter";
 
 function ShoppingCart(props)
@@ -19,7 +18,6 @@ function ShoppingCart(props)
   const onClick = () =>
   {
     props.setShowCart(!props.showCart);
-    console.log(props.showCart, "clicked");
   };
 
   const incrementQuantinity = (e) =>
@@ -119,7 +117,7 @@ function ShoppingCart(props)
           </div>
         </div>
       </div>
-      <button type="button" className="shoppingCart-container-btn-back">
+      <button type="button" className="shoppingCart-container-btn-checkout">
         Checkout
         {" "}
         <FontAwesomeIcon icon={faAngleRight} />
