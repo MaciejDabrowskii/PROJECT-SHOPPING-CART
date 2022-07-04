@@ -64,7 +64,7 @@ function ShoppingCart(props)
       </button>
       <div className="shoppingCart-container">
         <div className="shoppingCart-items-container">
-          <h3>Your Shopping Cart:</h3>
+          <h3>YOUR SHOPPING CART:</h3>
           <div className="shoppingCart-items">
             {props.shoppingCart.map((item) => (
               <div
@@ -79,7 +79,7 @@ function ShoppingCart(props)
 
                 <div className="shoppingCart-item-info">
                   {" "}
-                  <p className="shoppingCart-item-title">{item.name}</p>
+                  <p className="shoppingCart-item-title">{item.Name}</p>
                   <form>
                     <div className="shoppingCart-item-price">
                       {formatter.format(item.price)}
@@ -125,6 +125,7 @@ function ShoppingCart(props)
               {formatter.format(props.cartValue)}
             </div>
           </div>
+          <div className="shoppingCart-container-footer" />
         </div>
       </div>
       <button type="button" className="shoppingCart-container-btn-checkout">

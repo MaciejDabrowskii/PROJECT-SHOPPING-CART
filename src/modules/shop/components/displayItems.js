@@ -18,7 +18,7 @@ function DisplayItems(props)
           className="item-card card"
           key={item.id}
         >
-          <h3 className="item-title">{item.name}</h3>
+          <h3 className="item-title">{item.Name}</h3>
           <img
             src={item.imgURL}
             alt={item.name}
@@ -28,7 +28,7 @@ function DisplayItems(props)
             {Object.keys(item)
               .map((key) =>
               {
-                if (!(key.match("id|quantinity|imgURL|price|name")))
+                if (!(key.match("id|quantinity|imgURL|price|Name")))
                 {
                   return (
                     <li key={uniqid()}>
@@ -61,6 +61,8 @@ function DisplayItems(props)
             </button>
             <input
               type="number"
+              min={1}
+              step={1}
               id="item-quantinity-input"
               value={item.quantinity}
               onChange={(e) =>
@@ -70,9 +72,7 @@ function DisplayItems(props)
             />
             <button
               type="button"
-              data-id={item.id}
               className="item-card-form-btn"
-              data-group={`${props.group}`}
               onClick={() =>
               {
                 props.decrementQuantinity(item, props.group);
@@ -85,9 +85,7 @@ function DisplayItems(props)
             </button>
             <button
               type="button"
-              data-id={item.id}
               className="item-card-form-btn item-card-form-btn-add"
-              data-group={`${props.group}`}
               onClick={() =>
               {
                 props.addToCart(item, props.group);

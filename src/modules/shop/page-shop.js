@@ -6,6 +6,8 @@
 // eslint-disable-next-line no-unused-vars
 
 import React, { useEffect, useState, useRef } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import data from "../../data/data.json";
 import ShoppingCartIndicator from "./components/shopCartIndicator";
 import NavBar from "../navigation/navbar";
@@ -48,13 +50,13 @@ function Shop()
   {
     const { id } = item;
 
-    const inputValue = e.target.value.replace(/[^\d]/, "");
-    (inputValue > 0) ? setDataItems(
+    const inputValue = e.target.value;
+    setDataItems(
       {
         ...dataItems,
-        [group]: dataItems[group].map((el) => (el.id === id ? { ...el, quantinity: Number(inputValue) } : el)),
+        [group]: dataItems[group].map((el) => (el.id === id ? { ...el, quantinity: Math.round(Number(inputValue)) } : el)),
       },
-    ) : e.target.value = 1;
+    );
   };
 
   //   cart functions
@@ -83,7 +85,14 @@ function Shop()
     updateCart();
   }, [shoppingCart]);
 
-  //   router
+  // other
+
+  const onClickGit = () =>
+  {
+    window
+      .open("https://github.com/MaciejDabrowskii?tab=repositories", "_blank")
+      .focus();
+  };
 
   return (
     <div
@@ -145,6 +154,11 @@ function Shop()
           />
         </div>
       )}
+      <FontAwesomeIcon
+        icon={faGithub}
+        className="fa-solid git-icon"
+        onClick={onClickGit}
+      />
     </div>
   );
 }

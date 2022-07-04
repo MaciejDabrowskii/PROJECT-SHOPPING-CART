@@ -1,10 +1,19 @@
 /* eslint-disable max-len */
 /* eslint-disable react/react-in-jsx-scope */
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import NavBar from "../navigation/navbar";
 import logo from "../../assets/logos/logo_transparent.png";
 
 function Home()
 {
+  const onClickGit = () =>
+  {
+    window
+      .open("https://github.com/MaciejDabrowskii?tab=repositories", "_blank")
+      .focus();
+  };
+
   return (
     <div className="home-container">
       <div className="home-contents">
@@ -19,6 +28,11 @@ function Home()
           </div>
         </div>
       </div>
+      <FontAwesomeIcon
+        icon={faGithub}
+        className="fa-solid git-icon"
+        onClick={onClickGit}
+      />
     </div>
   );
 }
