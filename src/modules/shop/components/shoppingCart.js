@@ -9,7 +9,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faAngleLeft, faAngleRight, faTrash, faPlus, faMinus,
+  faAngleLeft, faAngleRight, faTrash, faPlus, faMinus, faHeartCrack,
 } from "@fortawesome/free-solid-svg-icons";
 import formatter from "../../utilities/foramtter";
 
@@ -119,11 +119,30 @@ function ShoppingCart(props)
                 </div>
               </div>
             ))}
+            {props.cartValue !== 0 && (
             <div className="shoppingCart-total">
               Total:
               {" "}
               {formatter.format(props.cartValue)}
             </div>
+            )}
+            {props.cartValue === 0 && (
+            <h3
+              className="shoppingCart-items-container-empty"
+            >
+              CART EMPTY
+              {" "}
+              <FontAwesomeIcon
+                icon={faHeartCrack}
+                style={{
+                  color: "#28cc9e",
+                  marginLeft: 10,
+                  fontSize: 30,
+
+                }}
+              />
+            </h3>
+            )}
           </div>
           <div className="shoppingCart-container-footer" />
         </div>

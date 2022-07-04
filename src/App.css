@@ -25,7 +25,7 @@
 .navbar-list > * {
   padding: 1rem 3rem;
   font-weight: bolder;
-  border: 1px solid #28cc9e;
+  border: 1px solid rgb(40, 204, 158);
 }
 
 .navbar-list > *:hover {
@@ -283,7 +283,6 @@ a:visited {
   display: flex;
   flex-direction: column;
   height: 100%;
-
 }
 
 .shoppingCart-items-container > h3 {
@@ -294,6 +293,13 @@ a:visited {
   text-align: center;
   background-color: #28cc9e;
 }
+
+.shoppingCart-items-container-empty{
+  text-align: center;
+  margin-top: 17%;
+}
+
+
 .shoppingCart-container-footer {
   margin-top: 2rem;
 }
