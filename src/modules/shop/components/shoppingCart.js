@@ -15,14 +15,9 @@ import formatter from "../../utilities/foramtter";
 
 function ShoppingCart(props)
 {
-  const onClick = () =>
+  const incrementQuantinity = (element) =>
   {
-    props.setShowCart(!props.showCart);
-  };
-
-  const incrementQuantinity = (e) =>
-  {
-    const { id } = e.target.dataset;
+    const { id } = element;
     props.setShoppingCart(props.shoppingCart.map((item) =>
     {
       if (item.id === id)
@@ -33,9 +28,9 @@ function ShoppingCart(props)
     }));
   };
 
-  const decrementQuantinity = (e) =>
+  const decrementQuantinity = (element) =>
   {
-    const { id } = e.target.dataset;
+    const { id } = element;
     props.setShoppingCart(props.shoppingCart.map((item) =>
     {
       if (item.id === id && item.quantinity > 1)
@@ -46,12 +41,22 @@ function ShoppingCart(props)
     }));
   };
 
+  const removeFromCart = (element) =>
+  {
+    const { id } = element;
+    props.setShoppingCart([...props.shoppingCart]
+      .filter((cartItem) => cartItem.id !== id));
+  };
+
   return (
     <div className="shoppingCart">
       <button
         type="button"
         className="shoppingCart-container-btn-back"
-        onClick={onClick}
+        onClick={() =>
+        {
+          props.setShowCart(!props.showCart);
+        }}
       >
         <FontAwesomeIcon icon={faAngleLeft} />
         {" "}
@@ -65,7 +70,6 @@ function ShoppingCart(props)
               <div
                 className="shoppingCart-item-card"
                 key={item.id}
-                data-id={item.id}
               >
                 <img
                   src={item.imgURL}
@@ -83,8 +87,10 @@ function ShoppingCart(props)
                     <button
                       type="button"
                       className="shoppingCart-item-info-btn"
-                      data-id={item.id}
-                      onClick={incrementQuantinity}
+                      onClick={() =>
+                      {
+                        incrementQuantinity(item);
+                      }}
                     >
                       <FontAwesomeIcon icon={faPlus} className="shoppingCart-item-info-btn-icon" />
                     </button>
@@ -92,16 +98,20 @@ function ShoppingCart(props)
                     <button
                       type="button"
                       className="shoppingCart-item-info-btn"
-                      data-id={item.id}
-                      onClick={decrementQuantinity}
+                      onClick={() =>
+                      {
+                        decrementQuantinity(item);
+                      }}
                     >
                       <FontAwesomeIcon icon={faMinus} className="shoppingCart-item-info-btn-icon" />
                     </button>
                     <button
                       type="button"
                       className="shoppingCart-item-info-btn"
-                      data-id={item.id}
-                      onClick={props.removeFromCart}
+                      onClick={() =>
+                      {
+                        removeFromCart(item);
+                      }}
                     >
                       <FontAwesomeIcon icon={faTrash} className="shoppingCart-item-info-btn-icon" />
                     </button>

@@ -22,9 +22,9 @@ function Shop()
   const [showCart, setShowCart] = useState(false);
 
   // quantinity
-  const incrementQuantinity = (e) =>
+  const incrementQuantinity = (item, group) =>
   {
-    const { id, group } = e.target.dataset;
+    const { id } = item;
     setDataItems(
       {
         ...dataItems,
@@ -33,9 +33,9 @@ function Shop()
     );
   };
 
-  const decrementQuantinity = (e) =>
+  const decrementQuantinity = (item, group) =>
   {
-    const { id, group } = e.target.dataset;
+    const { id } = item;
     setDataItems(
       {
         ...dataItems,
@@ -44,9 +44,10 @@ function Shop()
     );
   };
 
-  const onQuantinityInput = (e) =>
+  const onQuantinityInput = (e, item, group) =>
   {
-    const { id, group } = e.target.dataset;
+    const { id } = item;
+
     const inputValue = e.target.value.replace(/[^\d]/, "");
     (inputValue > 0) ? setDataItems(
       {
@@ -57,9 +58,9 @@ function Shop()
   };
 
   //   cart functions
-  const addToCart = (e) =>
+  const addToCart = (element, group) =>
   {
-    const { id, group } = e.target.dataset;
+    const { id } = element;
 
     const item = dataItems[group].find((el) => el.id === id);
     shoppingCart.some((el) => el.id === id)
@@ -71,13 +72,7 @@ function Shop()
     });
   };
 
-  const removeFromCart = (e) =>
-  {
-    setShoppingCart([...shoppingCart]
-      .filter((cartItem) => cartItem.id !== e.target.dataset.id));
-  };
-
-  const updateCart = (e) =>
+  const updateCart = () =>
   {
     setTotalPrice(shoppingCart.reduce((sum, cartItem) => sum + (cartItem.price * cartItem.quantinity), 0));
     setCartItemsNumber(shoppingCart.reduce((sum, cartItem) => sum + cartItem.quantinity, 0));
@@ -112,7 +107,6 @@ function Shop()
       <ShoppingCart
         shoppingCart={shoppingCart}
         setShoppingCart={setShoppingCart}
-        removeFromCart={removeFromCart}
         cartValue={totalPrice}
         setShowCart={setShowCart}
         showCart={showCart}
@@ -130,7 +124,7 @@ function Shop()
             group="Processors"
             incrementQuantinity={incrementQuantinity}
             decrementQuantinity={decrementQuantinity}
-            onChange={onQuantinityInput}
+            onQuantinityInput={onQuantinityInput}
             addToCart={addToCart}
           />
           <DisplayItems
@@ -138,7 +132,7 @@ function Shop()
             group="Graphics Cards"
             incrementQuantinity={incrementQuantinity}
             decrementQuantinity={decrementQuantinity}
-            onChange={onQuantinityInput}
+            onQuantinityInput={onQuantinityInput}
             addToCart={addToCart}
           />
           <DisplayItems
@@ -146,7 +140,7 @@ function Shop()
             group="Motherboards"
             incrementQuantinity={incrementQuantinity}
             decrementQuantinity={decrementQuantinity}
-            onChange={onQuantinityInput}
+            onQuantinityInput={onQuantinityInput}
             addToCart={addToCart}
           />
         </div>

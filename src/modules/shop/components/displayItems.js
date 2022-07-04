@@ -17,8 +17,6 @@ function DisplayItems(props)
         <div
           className="item-card card"
           key={item.id}
-          data-id={item.id}
-          data-group={`${props.group}`}
         >
           <h3 className="item-title">{item.name}</h3>
           <img
@@ -51,9 +49,10 @@ function DisplayItems(props)
             <button
               type="button"
               className="item-card-form-btn"
-              data-id={item.id}
-              data-group={`${props.group}`}
-              onClick={props.incrementQuantinity}
+              onClick={() =>
+              {
+                props.incrementQuantinity(item, props.group);
+              }}
             >
               <FontAwesomeIcon
                 className="item-card-btn-icon"
@@ -64,16 +63,20 @@ function DisplayItems(props)
               type="number"
               id="item-quantinity-input"
               value={item.quantinity}
-              data-id={item.id}
-              data-group={`${props.group}`}
-              onChange={props.onChange}
+              onChange={(e) =>
+              {
+                props.onQuantinityInput(e, item, props.group);
+              }}
             />
             <button
               type="button"
               data-id={item.id}
               className="item-card-form-btn"
               data-group={`${props.group}`}
-              onClick={props.decrementQuantinity}
+              onClick={() =>
+              {
+                props.decrementQuantinity(item, props.group);
+              }}
             >
               <FontAwesomeIcon
                 className="item-card-btn-icon"
@@ -85,7 +88,10 @@ function DisplayItems(props)
               data-id={item.id}
               className="item-card-form-btn item-card-form-btn-add"
               data-group={`${props.group}`}
-              onClick={props.addToCart}
+              onClick={() =>
+              {
+                props.addToCart(item, props.group);
+              }}
             >
               <FontAwesomeIcon
                 className="item-card-btn-icon"
