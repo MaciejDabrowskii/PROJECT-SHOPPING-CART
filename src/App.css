@@ -56,6 +56,21 @@ a:visited {
   align-items: center;
   background-color: rgba(0, 0, 0, 0.473);
   padding-top: 5%;
+  opacity: 0;
+  animation-name: fadein;
+  animation-duration: 1500ms;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 .home-contents-right {
@@ -146,6 +161,21 @@ a:visited {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 4rem;
+  opacity: 0;
+  animation-name: fadein;
+  animation-duration: 1500ms;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 .shop-items-container {
@@ -275,6 +305,21 @@ a:visited {
   margin: 2rem auto 0 auto;
   height: 80%;
   border-radius: 20px;
+  opacity: 0;
+  animation-name: fadein;
+  animation-duration: 1500ms;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 .shoppingCart-container-btn-back:hover, 
