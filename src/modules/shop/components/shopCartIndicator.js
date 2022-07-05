@@ -16,7 +16,13 @@ function ShoppingCartIndicator(props)
   return (
     <div className="shopCart-container" onClick={onClick}>
       <div className="shopCart-icon"><FontAwesomeIcon icon={faCartShopping} className="shopping-cart-indicator-icon" /></div>
-      <div className="shopCart-number-indicator">{props.cartItemsNumber}</div>
+      <div
+        className="shopCart-number-indicator"
+        data-testid="cart-test-indicator"
+      >
+        {props.cartItemsNumber}
+
+      </div>
       <div className="shopCart-value-indicator">
         {props.cartValue}
         $

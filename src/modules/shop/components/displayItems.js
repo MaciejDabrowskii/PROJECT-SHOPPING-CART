@@ -6,7 +6,9 @@
 import React from "react";
 import uniqid from "uniqid";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartPlus, faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCartPlus, faPlus, faMinus, faCheckSquare,
+} from "@fortawesome/free-solid-svg-icons";
 import formatter from "../../utilities/foramtter";
 
 function DisplayItems(props)
@@ -24,14 +26,24 @@ function DisplayItems(props)
             alt={item.name}
             className="item-img"
           />
-          <ul className="item-properties">
+          <ul className="item-properties fa-ul">
             {Object.keys(item)
               .map((key) =>
               {
                 if (!(key.match("id|quantinity|imgURL|price|Name")))
                 {
                   return (
-                    <li key={uniqid()}>
+                    <li
+                      key={uniqid()}
+                      className="item-properties-li"
+                    >
+                      <span className="fa-li list-marker">
+                        <FontAwesomeIcon
+                          icon={faCheckSquare}
+                          className="fa-regular fa-square"
+                        />
+                      </span>
+
                       {key}
                       :
                       {" "}
@@ -49,6 +61,7 @@ function DisplayItems(props)
             <button
               type="button"
               className="item-card-form-btn"
+              data-testid="button-increment"
               onClick={() =>
               {
                 props.incrementQuantinity(item, props.group);
@@ -64,7 +77,12 @@ function DisplayItems(props)
               min={1}
               step={1}
               id="item-quantinity-input"
+              data-testid="item-quantinity-input"
               value={item.quantinity}
+              onClick={(e) =>
+              {
+                e.target.value = "";
+              }}
               onChange={(e) =>
               {
                 props.onQuantinityInput(e, item, props.group);
@@ -73,6 +91,7 @@ function DisplayItems(props)
             <button
               type="button"
               className="item-card-form-btn"
+              data-testid="button-decrement"
               onClick={() =>
               {
                 props.decrementQuantinity(item, props.group);
@@ -86,6 +105,7 @@ function DisplayItems(props)
             <button
               type="button"
               className="item-card-form-btn item-card-form-btn-add"
+              data-testid="button-add-item"
               onClick={() =>
               {
                 props.addToCart(item, props.group);

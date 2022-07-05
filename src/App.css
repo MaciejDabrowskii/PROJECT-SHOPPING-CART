@@ -192,6 +192,10 @@ a:visited {
   list-style: none;
 }
 
+.list-marker{
+  color: #28cc9e;
+}
+
 .quantinity-indicator {
   display: inline-block;
 }
@@ -241,7 +245,7 @@ a:visited {
   height: 3rem;
   background-color: #28cc9e;
   border: 1px solid;
-  font-size: 1rem;
+  font-size: 1.5rem;
   cursor: pointer;
 }
 
