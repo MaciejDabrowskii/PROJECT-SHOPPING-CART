@@ -54,11 +54,10 @@ describe("Shop component", () =>
   {
     const { shop } = render(<Router><Shop /></Router>);
 
-    const incrementButton = screen.getAllByTestId("button-increment")[0];
     const input = screen.getAllByTestId("item-quantinity-input")[0];
     const decrementButton = screen.getAllByTestId("button-decrement")[0];
 
-    userEvent.click(incrementButton);
+    input.value = "2";
     userEvent.click(decrementButton);
     expect(input.value)
       .toBe("1");
