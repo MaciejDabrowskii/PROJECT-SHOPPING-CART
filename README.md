@@ -8,7 +8,7 @@
     Shopping Cart
   </h1>
 
-  <img alt="App preview" src="">
+  <img alt="App preview" src="https://github.com/MaciejDabrowskii/PROJECT-SHOPPING-CART/blob/main/src/assets/preview/preview2.jpg">
 <p></p>
   
 🔗 <b>[Live preview](https://maciejdabrowskii.github.io/PROJECT-SHOPPING-CART/)</b>
