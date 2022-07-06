@@ -6,7 +6,7 @@ import Home from "../home/page-home";
 function RouteSwitch()
 {
   return (
-    <BrowserRouter basename="/">
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/shop" element={<Shop />} />
