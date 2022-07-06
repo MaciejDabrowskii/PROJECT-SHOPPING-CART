@@ -6,7 +6,7 @@ import Home from "../home/page-home";
 function RouteSwitch()
 {
   return (
-    <BrowserRouter basename="/shoppingCart">
+    <BrowserRouter basename="/">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/shop" element={<Shop />} />
