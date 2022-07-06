@@ -21,7 +21,8 @@
   font-family: "Secular One", sans-serif;
   height: 100vh;
   position: relative;
-  min-width: 1800px;
+  width: 90%;
+  min-width: 920px;
   max-width: 1800px;
 }
 
@@ -309,7 +310,6 @@ transition: color 350ms linear;
 .shoppingCart > button {
   width: 8rem;
   height: 4rem;
-  margin: 0 8rem 0 8rem;
   font-weight: bolder;
   border: 1px solid #28cc9e;
   background-color: rgba(0, 0, 0, 0);
@@ -321,7 +321,8 @@ transition: color 350ms linear;
 .shoppingCart-container {
   position: relative;
   background-color: white;
-  width: 60%;
+  min-width: 900px;
+
   margin: 2rem auto 0 auto;
   height: 80%;
   border-radius: 20px;
