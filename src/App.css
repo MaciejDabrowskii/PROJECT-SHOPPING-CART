@@ -30,6 +30,7 @@
 
 .navbar-list > *:hover {
   background-color: rgba(40, 204, 158, 0.157);
+  transition: background-color 300ms linear;
 }
 
 a:link {
@@ -279,6 +280,16 @@ a:visited {
   cursor: pointer;
 }
 
+.item-card-form-btn-add:hover {
+color: white;
+transition: color 350ms linear;
+}
+
+.item-card-form-btn-add:active {
+  color: red;
+  transition: color 100ms linear;
+}
+
 .shoppingCart {
   height: 70%;
   display: flex;
@@ -325,6 +336,7 @@ a:visited {
 .shoppingCart-container-btn-back:hover, 
 .shoppingCart-container-btn-checkout:hover{
   background-color: rgba(40, 204, 158, 0.157);
+  transition: background-color 300ms linear;
   cursor: pointer;
 }
 

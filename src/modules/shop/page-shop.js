@@ -59,7 +59,7 @@ function Shop()
     );
   };
 
-  //   cart functions
+  // cart functions
   const addToCart = (element, group) =>
   {
     const { id } = element;

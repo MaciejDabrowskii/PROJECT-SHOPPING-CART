@@ -14,7 +14,11 @@ function ShoppingCartIndicator(props)
     props.setShowCart(!props.showCart);
   };
   return (
-    <div className="shopCart-container" onClick={onClick}>
+    <div
+      className="shopCart-container"
+      data-testid="shopping-cart-indicator"
+      onClick={onClick}
+    >
       <div className="shopCart-icon"><FontAwesomeIcon icon={faCartShopping} className="shopping-cart-indicator-icon" /></div>
       <div
         className="shopCart-number-indicator"
