@@ -67,11 +67,17 @@ function Shop()
     const item = dataItems[group].find((el) => el.id === id);
     shoppingCart.some((el) => el.id === id)
       ? setShoppingCart(shoppingCart.map((el) => (el.id === id ? { ...el, quantinity: el.quantinity + item.quantinity } : el)))
-      : setShoppingCart([...shoppingCart, item]);
+      : setShoppingCart([...shoppingCart, { ...item, expand: false }]);
     setDataItems({
       ...dataItems,
       [group]: dataItems[group].map((el) => ((el.id === id) ? { ...el, quantinity: 1 } : el)),
     });
+  };
+
+  const setExpand = (element) =>
+  {
+    const { id } = element;
+    setShoppingCart(shoppingCart.map((el) => (el.id === id ? { ...el, expand: !el.expand } : el)));
   };
 
   const updateCart = () =>
@@ -119,6 +125,7 @@ function Shop()
         cartValue={totalPrice}
         setShowCart={setShowCart}
         showCart={showCart}
+        setExpand={setExpand}
       />
       )}
       {!showCart

@@ -1,3 +1,6 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable no-unused-vars */
 /* eslint-disable max-len */
 /* eslint-disable consistent-return */
 /* eslint-disable react/react-in-jsx-scope */
@@ -6,15 +9,25 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
-import React from "react";
+import React, { setState, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faAngleLeft, faAngleRight, faTrash, faPlus, faMinus, faHeartCrack,
+  faAngleLeft, faAngleRight, faTrash, faPlus, faMinus, faHeartCrack, faCheckSquare,
 } from "@fortawesome/free-solid-svg-icons";
+import uniqid from "uniqid";
 import formatter from "../../utilities/foramtter";
 
 function ShoppingCart(props)
 {
+  const active = {
+    maxHeigth: "max-heigth",
+    transition: "max-height 0.25s ease-in",
+  };
+
+  // const changeExpand = (item) => {
+  //   expand.map((elements)=> {
+  // }
+
   const incrementQuantinity = (element) =>
   {
     const { id } = element;
@@ -68,8 +81,12 @@ function ShoppingCart(props)
           <div className="shoppingCart-items">
             {props.shoppingCart.map((item) => (
               <div
-                className="shoppingCart-item-card"
+                className={item.expand ? "shoppingCart-item-card expanded" : "shoppingCart-item-card"}
                 key={item.id}
+                onClick={() =>
+                {
+                  props.setExpand(item);
+                }}
               >
                 <img
                   src={item.imgURL}
@@ -79,7 +96,36 @@ function ShoppingCart(props)
 
                 <div className="shoppingCart-item-info">
                   {" "}
-                  <p className="shoppingCart-item-title">{item.Name}</p>
+                  <div className="shoppingCart-item-title">{item.Name}</div>
+                  <ul
+                    className={item.expand ? "shoppingCart-item-card-additional-info fa-ul expanded" : "shoppingCart-item-card-additional-info fa-ul"}
+                  >
+                    {Object.keys(item)
+                      .map((key) =>
+                      {
+                        if (!(key.match("id|quantinity|imgURL|price|Name|expand")))
+                        {
+                          return (
+                            <li
+                              key={uniqid()}
+                              className="item-properties-li"
+                            >
+                              <span className="fa-li list-marker">
+                                <FontAwesomeIcon
+                                  icon={faCheckSquare}
+                                  className="fa-regular fa-square"
+                                />
+                              </span>
+
+                              {key}
+                              :
+                              {" "}
+                              {item[key]}
+                            </li>
+                          );
+                        }
+                      })}
+                  </ul>
                   <form>
                     <div className="shoppingCart-item-price">
                       {formatter.format(item.price)}
