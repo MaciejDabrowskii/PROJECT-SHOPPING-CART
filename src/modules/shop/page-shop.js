@@ -74,10 +74,13 @@ function Shop()
     });
   };
 
-  const setExpand = (element) =>
+  const setExpand = (e, element) =>
   {
-    const { id } = element;
-    setShoppingCart(shoppingCart.map((el) => (el.id === id ? { ...el, expand: !el.expand } : el)));
+    if (!(e.target.parentElement.classList.contains("shoppingCart-item-form")))
+    {
+      const { id } = element;
+      setShoppingCart(shoppingCart.map((el) => (el.id === id ? { ...el, expand: !el.expand } : el)));
+    }
   };
 
   const updateCart = () =>

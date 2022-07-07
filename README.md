@@ -21,7 +21,9 @@ Shopping Cart project, created with [React](https://reactjs.org/) library. The p
 
 The goal is to practice the use of React Router and React Testing Library.
 
-NOTE: To display shopping cart items click on the shopping cart indicator on the shop page's top right corner.
+NOTE:
+-To display shopping cart items click on the shopping cart indicator on the shop page's top right corner.
+-Items in the shopping cart are expandable when clicked
 
 ### Technologies
 

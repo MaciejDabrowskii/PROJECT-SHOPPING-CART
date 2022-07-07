@@ -9,6 +9,7 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
+
 import React, { setState, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -23,10 +24,6 @@ function ShoppingCart(props)
     maxHeigth: "max-heigth",
     transition: "max-height 0.25s ease-in",
   };
-
-  // const changeExpand = (item) => {
-  //   expand.map((elements)=> {
-  // }
 
   const incrementQuantinity = (element) =>
   {
@@ -83,9 +80,9 @@ function ShoppingCart(props)
               <div
                 className={item.expand ? "shoppingCart-item-card expanded" : "shoppingCart-item-card"}
                 key={item.id}
-                onClick={() =>
+                onClick={(e) =>
                 {
-                  props.setExpand(item);
+                  props.setExpand(e, item);
                 }}
               >
                 <img
@@ -126,7 +123,9 @@ function ShoppingCart(props)
                         }
                       })}
                   </ul>
-                  <form>
+                  <form
+                    className="shoppingCart-item-form"
+                  >
                     <div className="shoppingCart-item-price">
                       {formatter.format(item.price)}
                     </div>
