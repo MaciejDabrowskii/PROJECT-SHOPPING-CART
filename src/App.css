@@ -145,6 +145,11 @@ a:visited {
   background-color: rgba(0, 0, 0, 0.692);
 }
 
+.shopCart-container:active {
+  border-color: red;
+  transition: border-color 100ms ease-in;
+}
+
 .shopping-cart-indicator-icon {
   font-size: 3rem;
 }
